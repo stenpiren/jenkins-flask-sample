@@ -106,3 +106,4 @@ venv.bak/
 .mypy_cache/
 pyvenv
 .idea
+local_config.py

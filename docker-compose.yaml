@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+  db:
+    container_name: pgsql-9.6.5
+    image: postgres:9.6.5-alpine
+
+
+volumes:
+  jenkins-flask-sample:
