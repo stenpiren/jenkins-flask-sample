@@ -16,7 +16,3 @@ class Config:
     SQLALCHEMY_ECHO = config.get("SQLALCHEMY_ECHO") or env.get("SQLALCHEMY_ECHO", False)
     SQLALCHEMY_TRACK_MODIFICATIONS = config.get("SQLALCHEMY_TRACK_MODIFICATIONS") or env.get(
         "SQLALCHEMY_TRACK_MODIFICATIONS", False)
-
-    @staticmethod
-    def init_app(app):
-        pass
