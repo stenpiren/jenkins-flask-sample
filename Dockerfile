@@ -1,6 +1,7 @@
 FROM python:3.6.3-alpine
 RUN apk add --no-cache build-base linux-headers python3-dev pcre-dev postgresql-dev
 COPY *.py app/
+COPY migrations app/
 COPY requirements.txt app/
 COPY docker-entrypoint.sh /usr/local/bin/
 WORKDIR app/

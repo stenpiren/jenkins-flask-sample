@@ -14,7 +14,6 @@ def init_app(config):
     app.config.from_object(config)
     db.init_app(app)
     api.init_app(app)
-    migrate = Migrate(app, db)
     if app.debug:
         with app.app_context():
             db.drop_all()
@@ -22,7 +21,7 @@ def init_app(config):
 
 
 init_app(Config)
+migrate = Migrate(app, db)
 
 if __name__ == '__main__':
     app.run()
-
