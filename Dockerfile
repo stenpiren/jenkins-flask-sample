@@ -1,11 +1,9 @@
 FROM python:3.6.3-alpine
 RUN apk add --no-cache build-base linux-headers python3-dev pcre-dev postgresql-dev
-RUN pip install --no-cache-dir uwsgi
-COPY . /app
-WORKDIR /app
-RUN pip install --no-cache-dir -r requirements.txt
+COPY *.py app/
+COPY requirements.txt app/
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/docker-entrypoint.sh /
+WORKDIR app/
+RUN pip install --no-cache-dir --index-url=https://mirrors.ustc.edu.cn/pypi/web/simple/ uwsgi
+RUN pip install --no-cache-dir --index-url=https://mirrors.ustc.edu.cn/pypi/web/simple/ -r requirements.txt
 ENTRYPOINT ["docker-entrypoint.sh"]
-
-CMD ["uswgi"]

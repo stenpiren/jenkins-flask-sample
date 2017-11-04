@@ -1,10 +1,16 @@
 version: '3'
 services:
   web:
+    container_name: flask
+    build: .
+    ports:
+      - 9090:9090
+    links:
+      - db:pgsql
+    environment:
+      - SQLALCHEMY_DATABASE_URI=postgresql://flask@pgsql/flask
   db:
     container_name: pgsql-9.6.5
     image: postgres:9.6.5-alpine
-
-
-volumes:
-  jenkins-flask-sample:
+    environment:
+      - POSTGRES_USER=flask

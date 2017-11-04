@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -e
-
-exec "$@" --http :9090 --wsgi-file app.py --callable app
+export FLASK_APP=/app/app.py
+flask db upgrade && uwsgi --http-socket :9090 --uid nobody --master --wsgi-file /app/app.py --callable app
