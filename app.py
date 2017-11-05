@@ -8,19 +8,9 @@ from models import db
 from config import Config
 
 app = Flask(__name__)
-
-
-def init_app(config):
-    app.config.from_object(config)
-    db.init_app(app)
-    api.init_app(app)
-    if app.debug:
-        with app.app_context():
-            db.drop_all()
-            db.create_all()
-
-
-init_app(Config)
+app.config.from_object(Config)
+db.init_app(app)
+api.init_app(app)
 migrate = Migrate(app, db)
 
 if __name__ == '__main__':

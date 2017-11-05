@@ -8,9 +8,11 @@ services:
     depends_on:
       - db
     environment:
-      - SQLALCHEMY_DATABASE_URI=postgresql://flask@db/flask
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres@db/flask
   db:
     container_name: pgsql-9.6.5
     image: postgres:9.6.5-alpine
+    ports:
+      - 5432:5432
     environment:
       - POSTGRES_USER=flask
