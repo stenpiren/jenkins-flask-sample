@@ -7,4 +7,5 @@ COPY docker-entrypoint.sh /usr/local/bin/
 WORKDIR app/
 RUN pip install --no-cache-dir --index-url=https://mirrors.ustc.edu.cn/pypi/web/simple/ uwsgi
 RUN pip install --no-cache-dir --index-url=https://mirrors.ustc.edu.cn/pypi/web/simple/ -r requirements.txt
+EXPOSE 9090
 ENTRYPOINT ["docker-entrypoint.sh"]
