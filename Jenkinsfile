@@ -60,10 +60,10 @@ pipeline {
         stage('Publish Docker Image') {
             steps {
                 script {
-                    docker.withRegistry("${env.DOCKER_REGISTRY}", 'DOCKER_REGISTRY_CREDENTIAL') {
+                    docker.withRegistry("${env.DOCKER_REGISTRY}", "DOCKER_REGISTRY_CREDENTIAL") {
                         def image = docker.image("${env.DOCKER_IMAGE_NAME}:${env.BUILD_ID}")
-                        image.push()
-                        image.push('latest')
+                        image.push("${env.BUILD_ID}")
+                        image.push("latest")
                     }
                 }
             }
