@@ -9,4 +9,4 @@ done
 
 export FLASK_APP=/app/app.py
 
-flask db upgrade && uwsgi --http :9090 --uid nobody --master --wsgi-file /app/app.py --callable app
+flask db upgrade && uwsgi --socket :3031 --uid nobody --master --wsgi-file /app/app.py --callable app
